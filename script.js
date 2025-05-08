@@ -28,13 +28,23 @@ const calculate = {
   "=" : (firstNum, secondNum) => secondNum,
 };
 
-function useOperator(operator){
+function useOperator(operator) {
   const currentValue = Number(calculatorDisplay.textContent);
 
-  if (operatorValue){
+  if (operatorValue && awaitingNextValue) {
     operatorValue = operator;
+    return;
   }
+
+  if (!firstValue) {
+    firstValue = currentValue;
+  } else {
+    const calculation = calculate[operatorValue](firstValue, currentValue);
+    calculatorDisplay.textContent = calculation;
+  }
+
   awaitingNextValue = true;
+  operatorValue = operator;
 }
 
 inputBtns.forEach((inputBtn)=> {
