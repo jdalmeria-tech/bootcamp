@@ -41,6 +41,7 @@ function useOperator(operator) {
   } else {
     const calculation = calculate[operatorValue](firstValue, currentValue);
     calculatorDisplay.textContent = calculation;
+    firstValue = calculation;
   }
 
   awaitingNextValue = true;
