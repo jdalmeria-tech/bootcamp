@@ -3,13 +3,20 @@ const inputBtns = document.querySelectorAll("button");
 const clearBtn = document.getElementById("clear-btn");
 
 let firstValue = 0;
+let awaitingNextValue = false;
 
 // this function will be responsible for populating the
 // number on the display
 function addNumberValue(number){
-  const displayValue = calculatorDisplay.textContent;
-  calculatorDisplay.textContent =
-   displayValue === "0" ? number : displayValue + number;
+
+  if (awaitingNextValue) {
+    calculatorDisplay.calculatorDisplay.textContent = number;
+    awaitingNextValue = false;
+  } else {
+    const displayValue = calculatorDisplay.textContent;
+    calculatorDisplay.textContent =
+      displayValue === "0" ? number : displayValue + number;
+  }
 }
 
 inputBtns.forEach((inputBtn)=> {
