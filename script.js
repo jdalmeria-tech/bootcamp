@@ -19,6 +19,14 @@ function addNumberValue(number){
   }
 }
 
+const calculate = {
+  "/" : (firstNum, secondNum) => firstNum / secondNum,
+  "*" : (firstNum, secondNum) => firstNum * secondNum,
+  "+" : (firstNum, secondNum) => firstNum + secondNum,
+  "-" : (firstNum, secondNum) => firstNum - secondNum,
+  "=" : (firstNum, secondNum) => secondNum,
+};
+
 inputBtns.forEach((inputBtn)=> {
   if(inputBtn.classList.length === 0) {
     inputBtn.addEventListener("click", ()=> addNumberValue(inputBtn.value));
